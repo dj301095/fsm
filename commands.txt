@@ -1,0 +1,25 @@
+root@6e01b542c9d8:/OpenROAD-flow-scripts/flow# make DESIGN_CONFIG=designs/ihp-sg13g2/ibex/config.mk 
+doc@debian:~$ docker run -it \
+    -v $(pwd):/mnt/work_dir \
+    openroad/orfs:latest bash
+    
+    
+    
+    
+    
+    *********************************************************
+    doc@debian:~/OpenROAD-Flow-Scripts$ docker run -it \
+    -v $(pwd)/flow/designs:/OpenROAD-flow-scripts/flow/designs \
+    -v $(pwd)/flow/platforms:/OpenROAD-flow-scripts/flow/platforms \
+    -w /OpenROAD-flow-scripts/flow \
+    openroad/orfs:latest bash
+    *******magic****
+    # 1. Clear the empty cell you accidentally created
+flush
+
+# 2. READ the GDS file (This brings your layout into Magic)
+gds read 6_final.gds
+
+# 3. NOW load the cell (The top cell is usually named 'fsm' or '6_final')
+load fsm
+
